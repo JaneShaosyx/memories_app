@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { AppBar, Avatar, Button, Toolbar, Typography, unstable_createMuiStrictModeTheme } from '@material-ui/core';
 import useStyles from './styles.js';
-import memories from '../../images/memories.png';
+import memoriesLogo from '../../images/memories-Logo.png';
+import memoriesText from '../../images/memories-Text.png';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { LOGOUT } from '../../constants/actionTypes';
@@ -27,23 +28,25 @@ const Navbar = () => {
             const decodedToken = decode(token);
             if (decodedToken.exp * 1000 < new Date().getTime()) logout();
         }
-        
+
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-            <div className={classes.brandContainer}>
-                <Typography component={Link} to="/" className={classes.heading} align="center" variant="h2">
-                    Memories
-                </Typography>
+            <Link to="/" className={classes.brandContainer}>
+                <img
+                    src={memoriesText}
+                    alt="icon"
+                    height="45"
+                />
                 <img
                     className={classes.image}
-                    src={memories}
+                    src={memoriesLogo}
                     alt="memories"
-                    height="60"
+                    height="40"
                 />
-            </div>
+            </Link>
             <Toolbar className={classes.toolbar}>
                 {user ? (
                     <div className={classes.profile}>

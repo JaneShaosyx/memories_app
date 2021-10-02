@@ -4,3 +4,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+
+* {
+  /* font-family: 'Noto Sans JP' !important; */
+  font-family: "Heebo", sans-serif !important;
+}

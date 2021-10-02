@@ -5,16 +5,17 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
+import bodyParser from 'body-parser';
 
 const app = express();
 dotenv.config();
 
 // Attention: With express version => 4.16.0 the body-parser middleware was added back under the methods express.urlencoded() and express.json()
-app.use(express.json({ limit: '30mb', extend: true }));
-app.use(express.urlencoded({ limit: '30mb', extend: true }));
+app.use(bodyParser.json({ limit: '30mb', extend: true }));
+app.use(bodyParser.urlencoded({ limit: '30mb', extend: true }));
 app.use(cors());
 app.use('/posts', postRoutes);
-app.use('/user',userRoutes);
+app.use('/user', userRoutes);
 
 // use mongodb atlas as the database
 const CONNECTION_URL = process.env.CONNECTION_URL;
