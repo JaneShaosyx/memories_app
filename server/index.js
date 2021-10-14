@@ -15,6 +15,9 @@ app.use(bodyParser.json({ limit: '30mb', extend: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extend: true }));
 app.use(cors());
 app.use('/posts', postRoutes);
+app.get('/', (req, res) => {
+  res.send("Hello to my-memories-project API");
+});
 app.use('/user', userRoutes);
 
 // use mongodb atlas as the database
